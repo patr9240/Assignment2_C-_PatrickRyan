@@ -25,7 +25,7 @@ int main() {
 	userFile.open("..\\Users.txt");
 	if (userFile)
 	{
-		//read the lines from the name file, insert it into two vectors.
+		//read the lines from the Users file, insert into the userVector.
 		for (string line; getline(userFile, line);)
 		{
 			userVector.push_back(line);
@@ -52,7 +52,6 @@ int main() {
 
 		//This switch controls where user is navigated to on printed menu
 		switch (choice) {
-
 			//This case allows the user to update account information
 		case 1:
 			User.UpdateUserList(false, User.getUsername(), User.getFirstName(), User.getEmail(), User.getPassword());
@@ -60,9 +59,8 @@ int main() {
 
 			//This case sets a new highscore
 		case 2:
-			User.SetHighScore();
+			User.SetHighScore(User.getUsername());
 			break;
-
 			//This case deletes the current user account
 		case 3:
 			User.DeleteUser(User.getUsername());
@@ -72,7 +70,6 @@ int main() {
 		case 4:
 			ScoreManager.PrintHighScore();
 			break;
-
 			//This case exits the application
 		case 5:
 			quit = true;
